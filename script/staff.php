@@ -68,6 +68,7 @@
                 # Staff Table :: END ::
                 mysqli_close($conn);
             ?>
+            <?php echo "<a href='add_staff.php'>Add Staff</a>"; ?>
             <?php require_once('logout.php') ?>
         </div>
         <footer>
