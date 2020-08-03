@@ -45,8 +45,26 @@ main {
   width: 80%;
   position: relative;
   padding: 50px 10%;
+  background: none;
 }
-
+.base-btn {
+    border: 1px solid #1F2739;
+    background-color: #7D8AA5;
+    padding: 5px 10px;
+    cursor: pointer;
+    color: #dddddd;
+}
+.add-staff {
+  text-decoration: none;
+  margin-top: 20px;
+  display: block;
+  width: fit-content;
+}
+.add-staff:hover {
+    background-color: #dddddd;
+    color: #1F2739;
+    transition: 0.4s;
+}
 
 table {
     font-family: arial, sans-serif;

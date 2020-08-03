@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/staff_form.css">
     <title>Staff Form</title>
 </head>
 <body>
@@ -22,7 +23,8 @@
                 echo $add_staff_form;
                 if (isset($_POST['addstaff'])) {
                     if (empty($_POST['fname']) || empty($_POST['lname']) || empty($_POST['role'])
-                        || is_numeric($_POST['fname']) || is_numeric($_POST['lname']) || is_numeric($_POST['role'])) {
+                        || check_numbers($_POST['fname']) || check_numbers($_POST['lname']) || is_numeric($_POST['role']) || 
+                            !check_id($getProjectID)) {
                         echo "<h4>Invalid information has been added</h4>";
                     } else {
                         if (mysqli_query($conn, $sql)) {

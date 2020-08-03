@@ -1,0 +1,41 @@
+form {
+    width: fit-content;
+}
+form > input {
+    display: block;
+    padding: 5px 15px;
+    margin-bottom: 20px;
+    border: 1px solid #1F2739;
+    border-radius: 2px;
+}
+form > .button {
+    border: 1px solid #1F2739;
+    background-color: #7D8AA5;
+    padding: 5px 10px;
+    cursor: pointer;
+    color: #dddddd;
+}
+form > .button:hover {
+    background-color: #dddddd;
+    color: #1F2739;
+    transition: 0.4s;
+}
+.back-btn {
+    float: left;
+    display: block;
+    text-decoration: none;
+    border: 1px solid #1F2739;
+    background-color: #7D8AA5;
+    padding: 4.5px 10px;
+    cursor: pointer;
+    color: #dddddd;
+    font-size: 13.3px;
+}
+    .back-btn:hover {
+    background-color: #dddddd;
+    color: #1F2739;
+    transition: 0.4s;
+}
+form > input:focus {
+    outline: none;
+}
