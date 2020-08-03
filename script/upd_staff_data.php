@@ -1,23 +1,20 @@
-<?php
-//  $servername = "localhost";
-//  $username = "root";
-//  $password = "mysql";
-//  $dbname = 'esybes_ir_rysiai';
-
-// // Create connection
-// $conn = mysqli_connect($servername, $username, $password, $dbname);
-// // Check connection
-// if (!$conn) {
-//   die("Connection failed: " . mysqli_connect_error());
-// }
-
-// $sql = "UPDATE staff SET lastname='Doe' WHERE id=2";
-
-// if (mysqli_query($conn, $sql)) {
-//   echo "Record updated successfully";
-// } else {
-//   echo "Error updating record: " . mysqli_error($conn);
-// }
-
-// mysqli_close($conn);
-?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="" method="post">
+        <input type="submit" name="vardenis" value="get">
+    </form>
+    <form action="" method="post">
+        <input type="submit" name="pavardenis" value="post">
+    </form>
+    <?php 
+        echo "GET: ".$_POST['vardenis'];
+        echo "<br>POST: ".$_POST['pavardenis'];
+    ?>
+</body>
+</html>

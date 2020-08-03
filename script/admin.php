@@ -25,7 +25,6 @@
                 $username = "root";
                 $password = "mysql";
                 $dbname = 'esybes_ir_rysiai';
-
                 $conn = mysqli_connect($servername, $username, $password, $dbname); // Create connection
                 
                 if (!$conn) {
@@ -73,8 +72,8 @@
                 } else {
                     echo "ERROR: staff table not found!";
                 }
-                
                 $get_upd_staff = $_POST['upd-staff-btn'];
+                
                 echo "First POST: $get_upd_staff<br>";
                 $sql = "SELECT first_name, last_name, $role, projectid FROM esybes_ir_rysiai.staff WHERE StaffID=2";
                 // $query = mysqli_query($db_conx, $sql) or trigger_error("Query Failed! SQL: $sql - Error: ".mysqli_error(db_conx), E_USER_ERROR);
@@ -95,6 +94,7 @@
                             <input type='text' name='upd-role' value='$staffRole'/>
                             <input type='text' name='upd-staffProject' value='$staffProject'/>
                             <input type='submit' name='sub-staff-upd' value='Done'/>
+                            <input type='hidden' id='custId' name='klaudas' value='$get_upd_staff'>
                             </form>
                             ";
                         }
@@ -109,14 +109,17 @@
                 $subStaffUpd = $_POST['sub-staff-upd'];
                 echo "second POST: $get_upd_staff<br>";
                 echo "kas cia ".$_SESSION['post_data'];
-                var_dump($_SESSION['post_data']);
+                // var_dump($_SESSION['post_data']);
                 
                 if (isset($subStaffUpd)) {
+                    echo $_POST['klaudas'];
+                    $placeholder = $_POST['klaudas'];
                     echo "THIRD POST: $get_upd_staff<br>";
                     echo "mnewshit: $newshit";
                     // $get_upd_staff = $staffID;
 
                         $update_staff = "UPDATE staff SET first_name='$upd_fname', last_name='$upd_lname', $role='$upd_role', projectid=$upd_staffProject WHERE StaffID=$placeholder";
+                        print($update_staff);
                         if (mysqli_query($conn, $update_staff)) {
                         echo "Record updated successfully";
                         // $placeholder = 0;
