@@ -1,4 +1,5 @@
 <?php 
+    $role = 'role';
     $login_warning = "
             <h1>Sign in</h1>
             <div class='form'>
@@ -40,9 +41,9 @@
             </form>
             <h4>Invalid information has been added</h4>
             <a href='staff.php'>Back</a>";
-    $upd_staff_btn = "<form style='width: fit-content; display: inline;' action='' method='post'>
-                        <input type='submit' name='upd-staff-btn' value='Edit'>
-                    </form>";
+    // $upd_staff_btn = "<form style='width: fit-content; display: inline;' action='' method='post'>
+    //                     <input type='submit' name='upd-staff-btn' value='$test'>
+    //                 </form>";
     $del_staff_btn = "<form style='width: fit-content; display: inline;' action='' method='post'>
                         <input type='submit' name='del-staff-btn' value='Del'>
                     </form>";
