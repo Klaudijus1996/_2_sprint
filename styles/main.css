@@ -7,6 +7,8 @@ main {
   width: 100%;
   height: 100vh;
   background-color: #566587;
+  overflow-y: scroll;
+  /* overflow: hidden; */
 }
 .navbar {
   width: 100%;
@@ -43,9 +45,11 @@ main {
 }
 .container {
   width: 80%;
+  max-height: auto;
   position: relative;
   padding: 50px 10%;
   background: none;
+  /* overflow: scroll; */
 }
 .base-btn {
     border: 1px solid #1F2739;

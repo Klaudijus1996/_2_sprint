@@ -15,14 +15,4 @@
     $getProjectID = !empty($_POST['pID']) ? $_POST['pID'] : "NULL";
     $nullis = NULL;
     $sql = "insert into esybes_ir_rysiai.staff (first_name, last_name, role, projectid) values ('$getName', '$getLastName', '$getRole', $getProjectID)";
-
-    // if (isset($_POST['addstaff'])) {
-    //     if (mysqli_query($conn, $sql)) {
-    //         echo "Staff member added successfully";
-    //     } else {
-    //         echo "Error adding staff: " . mysqli_error($conn);
-    //     }
-    // }
-    // mysqli_close($conn);
-    
 ?>

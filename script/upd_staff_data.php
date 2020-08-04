@@ -28,16 +28,19 @@
             $upd_staffProject = !empty($_POST['upd-staffProject']) ? $_POST['upd-staffProject'] : "NULL";
             $subStaffUpd = $_POST['sub-staff-upd'];                
             if (isset($_POST['upd-staff'])) {
-                $placeholder = $_POST['upd-staff'];
-
-                    $update_staff = "UPDATE staff SET first_name='$upd_fname', last_name='$upd_lname', $role='$upd_role', projectid=$upd_staffProject WHERE StaffID=$placeholder";
+                $post_upd_staff = $_POST['upd-staff'];
+                if (!empty($upd_fname) && !empty($upd_lname) && !empty($upd_role) && !check_numbers($upd_fname) && !check_numbers($upd_lname)) {
+                    $update_staff = "UPDATE staff SET first_name='$upd_fname', last_name='$upd_lname', $role='$upd_role', projectid=$upd_staffProject WHERE StaffID=$post_upd_staff";
                     if (mysqli_query($conn, $update_staff)) {
                     echo "Staff data updated succesfully.";
                     ob_end_flush();
-                    header("Location: admin.php");
+                    header("Location: admin_staff.php");
                 
+                    } else {
+                        echo "Error updating record: " . mysqli_error($conn);
+                    }
                 } else {
-                    echo "Error updating record: " . mysqli_error($conn);
+                    echo "<h4 style='color: #8F1F14'>ERROR: Invalid information provided!</h4>";
                 }
             }
         }

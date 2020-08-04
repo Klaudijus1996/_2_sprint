@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../styles/main.css">
-    <title>Staff and Projects</title>
+    <link rel="stylesheet" href="../styles/upd_staff_form.css">
+    <title>Projects</title>
 </head>
 <body>
     <main>
@@ -32,45 +33,57 @@
                 if (!$conn) {
                     die("Connection failed: " . mysqli_connect_error());
                 }
-
-                // echo "Connected successfully<br>";
-                # Staff Table :: Start ::
-                $sql = "SELECT projects.projectid, GROUP_CONCAT(CONCAT_WS(' ', first_name, last_name)) as fullname, project_name, deadline FROM esybes_ir_rysiai.projects
-                left join staff on projects.projectid = staff.projectid
-                GROUP BY projects.ProjectID;";
+                # Projects Table :: START ::
+                $sql = "SELECT projectid, project_name, deadline FROM projects";
                 $result = mysqli_query($conn, $sql);
                 if (mysqli_num_rows($result) > 0) {
-                        echo "
+                    echo "
                         <table>
                             <tr>
                                 <th>Project ID</th>
-                                <th>People assigned to project</th>
                                 <th>Project Name</th>
                                 <th>Deadline</th>
+                                <th>Actions</th>
                             </tr>
                                 ";
                     while($row = mysqli_fetch_assoc($result)) {
+                        ob_start();
                         $projectID = $row['projectid'];
-                        $staffNames = $row['fullname'] != NULL ? $row['fullname'] : "Undecided"; 
                         $projectName = $row['project_name'];
                         $projectDeadline = $row['deadline'];
+                        $upd_projects_btn = "<form style='width: fit-content; display: inline;' action='' method='get'>
+                                            <input class='edit base-btn' type='submit' value='Edit'>
+                                            <input type='hidden' name='upd-projects-btn' value='$projectID'>
+                                        </form>";
+                        $del_projects_btn = "<form style='width: fit-content; display: inline;' action='' method='get'>
+                                            <input class='del base-btn' type='submit' value='Del'>
+                                            <input type='hidden' name='del-projects-btn' value='$projectID'>
+                                        </form>";
                         echo "
                         <tr>
                             <td>$projectID</td>
-                            <td>$staffNames</td>
                             <td>$projectName</td>
                             <td>$projectDeadline</td>
+                            <td>$upd_projects_btn $del_projects_btn</td>
                         </tr>
                         ";
                     }
                     echo "</table>";
+                    echo "
+                        <form action='' method='get'>
+                            <input class='add-staff base-btn' type='submit' name='create_project' value='Create New'>
+                        </form>
+                        ";
                 } else {
-                    echo "ERROR: staff table not found!";
+                    echo "ERROR: projects table not found!";
                 }
-                # Staff Table :: END ::
-                mysqli_close($conn);
+                require_once('logout.php');
+                include_once('add_project.php');
+                include_once('del_project_data.php');
+                include_once('edit_project_data.php');
+                # Projects Table :: END ::
+                // mysqli_close($conn);
             ?>
-            <?php require_once('logout.php') ?>
         </div>
         <footer>
             &#169; <?php echo date("Y-m-d"); ?>

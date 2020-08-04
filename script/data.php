@@ -41,13 +41,14 @@
             </form>
             <h4>Invalid information has been added</h4>
             <a href='staff.php'>Back</a>";
-    // $upd_staff_btn = "<form style='width: fit-content; display: inline;' action='' method='post'>
-    //                     <input type='submit' name='upd-staff-btn' value='$test'>
-    //                 </form>";
-    $del_staff_btn = "<form style='width: fit-content; display: inline;' action='' method='post'>
-                        <input type='submit' name='del-staff-btn' value='Del'>
-                    </form>";
-
+    $create_project_form = "
+            <form class='upd-form' action='' method='post'>
+                *Enter name: <input type='text' name='project_name' placeholder='*name'>
+                *Enter deadline: <input type='text' name='deadline' placeholder='*YYYY-MM-DD'>
+                <input class='done base-btn' type='submit' name='create_new_project' value='Submit'>
+                <a class='back base-btn' href='admin_projects.php'>Back</a>
+            </form>
+                ";
     function check_numbers($user_input) {
         $isNum = false;
         for($i=0; $i < strlen($user_input); $i++) {
