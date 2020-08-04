@@ -65,7 +65,6 @@ main {
     color: #1F2739;
     transition: 0.4s;
 }
-
 table {
     font-family: arial, sans-serif;
     width: 100%;
@@ -86,7 +85,7 @@ table {
   position: absolute;
   left: 50%;
   bottom: 0;
-  transform: translate(-50%);
+  transform: translate(-50%, 0);
 }
 .logout > form > input {
   background-color: #7D8AA5;

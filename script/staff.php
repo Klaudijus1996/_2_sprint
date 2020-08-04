@@ -14,6 +14,7 @@
                 <a href="staff.php">Darbuotojai</a>
                 <a href="projects.php">Projektai</a>
                 <a href="staff_projects.php">Darbuotoju ir projektu lentele</a>
+                <a href="admin.php">Admin</a>
                 <p>projektu valdymo sistema</p>
             </nav>
         </div>

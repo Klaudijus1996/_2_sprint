@@ -1,0 +1,52 @@
+.back {
+    text-decoration: none;
+    display: inline-block;
+    width: fit-content;
+    float: left;
+}
+.back:hover {
+    background-color: #dddddd;
+    color: #1F2739;
+    transition: 0.4s;
+}
+.upd-form {
+    margin-top: 20px;
+    width: fit-content;
+    margin-right: 0;
+    display: inline-block;
+}
+.upd-form > input {
+    display: block;
+    padding: 5px 15px;
+    margin-bottom: 10px;
+    border: 1px solid #1F2739;
+    border-radius: 2px;
+}
+.done {
+    /* margin-right: 0; */
+    float: right;
+}
+form > .done:hover {
+    background-color: #dddddd;
+    color: #1F2739;
+    transition: 0.4s;
+}
+.logout {
+    position: absolute;
+    left: 50%;
+    bottom: 6%;
+    transform: translate(-50%, -6%);
+  }
+  .edit:hover {
+    background-color: #dddddd;
+    color: #1F2739;
+    transition: 0.4s;
+  }
+  .del {
+      margin-left: 20px;
+  }
+  .del:hover {
+    background-color: #dddddd;
+    color: #1F2739;
+    transition: 0.4s;
+  }
