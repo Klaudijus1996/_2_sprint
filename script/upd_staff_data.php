@@ -17,7 +17,7 @@
                     Job Description: <input type='text' name='upd-role' value='$staffRole'/>
                     Assign Project: <input type='text' name='upd-staffProject' value='$staffProject'/>
                     <input class='done base-btn' type='submit' value='Done'/>
-                    <input type='hidden' name='klaudas' value='$get_upd_staff'>
+                    <input type='hidden' name='upd-staff' value='$get_upd_staff'>
                     <a class='back base-btn' href='admin.php'>Back</a>
                 </form>
                 ";
@@ -27,14 +27,15 @@
             $upd_role = $_POST['upd-role'];
             $upd_staffProject = !empty($_POST['upd-staffProject']) ? $_POST['upd-staffProject'] : "NULL";
             $subStaffUpd = $_POST['sub-staff-upd'];                
-            if (isset($_POST['klaudas'])) {
-                $placeholder = $_POST['klaudas'];
+            if (isset($_POST['upd-staff'])) {
+                $placeholder = $_POST['upd-staff'];
 
                     $update_staff = "UPDATE staff SET first_name='$upd_fname', last_name='$upd_lname', $role='$upd_role', projectid=$upd_staffProject WHERE StaffID=$placeholder";
                     if (mysqli_query($conn, $update_staff)) {
                     echo "Staff data updated succesfully.";
-                    
-                    
+                    ob_end_flush();
+                    header("Location: admin.php");
+                
                 } else {
                     echo "Error updating record: " . mysqli_error($conn);
                 }

@@ -37,8 +37,7 @@ if (isset($_POST['klaudas'])) {
                     die("Connection failed: " . mysqli_connect_error());
                 }
 
-                // echo "Connected successfully<br>";
-                # Staff Table :: Start ::
+                # Staff Table UPD & DEL:: Start ::
                 $sql = "SELECT staffid, first_name, last_name, ".'role, '."projectid FROM staff";
                 $result = mysqli_query($conn, $sql);
                 if (mysqli_num_rows($result) > 0) {
@@ -54,6 +53,7 @@ if (isset($_POST['klaudas'])) {
                             </tr>
                                 ";
                     while($row = mysqli_fetch_assoc($result)) {
+                        ob_start();
                         $staffID = $row['staffid'];
                         $staffNames = $row['first_name'];
                         $staffSurnames = $row['last_name'];
@@ -88,7 +88,7 @@ if (isset($_POST['klaudas'])) {
                 include_once('del_staff_data.php');
                 include_once('upd_staff_data.php');
 
-                # Staff Table :: END ::
+                # Staff Table UPD & DEL :: END ::
                 ?>
         </div>
         <footer>
