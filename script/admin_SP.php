@@ -12,12 +12,9 @@
     <main>
         <div class="navbar">
             <nav>
-                <a href="staff.php">Darbuotojai</a>
-                <a href="projects.php">Projektai</a>
-                <a href="staff_projects.php">Darbuotoju ir projektu lentele</a>
-                <a href="admin_staff.php">Admin</a>
-                <a href="admin_projects.php">Admin P</a>
-                <a href="admin_SP.php">Admin SP</a>
+                <a href="admin_staff.php">Darbuotojai</a>
+                <a href="admin_projects.php">Projektai</a>
+                <a href="admin_SP.php">Darbuotoju ir projektu lentele</a>
                 <p>projektu valdymo sistema</p>
             </nav>
         </div>
@@ -91,7 +88,7 @@
                         echo "
                             <form style='display: inline-grid; margin-left: 20px;' action='' method='post'>
                                 <label style='color: #dddddd' for='names'>Assign project $project_name to: </label>
-                                <select name='names' id='names'>";
+                                <select style='padding: 3px 0;' name='names' id='names'>";
                         while($row = mysqli_fetch_assoc($result)) {
                             $staffNames = $row['fullname'] != NULL ? $row['fullname'] : "Undecided";
                                         echo "<option value='$staffNames'>$staffNames</option>";

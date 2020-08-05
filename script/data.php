@@ -29,7 +29,7 @@
                 Enter project ID: <input type='text' name='pID' placeholder='Project ID'>
                 <input class='button' type='submit' name='addstaff' value='Submit'>
             </form>
-            <a class='back-btn' href='staff.php'>Back</a>
+            <a class='back-btn' href='admin_staff.php'>Back</a>
                 ";
     $add_staff_form_error = "
             <form action='' method='post'>
@@ -50,7 +50,7 @@
             </form>
                 ";
     $create_project_form_sp = "
-            <form class='upd-form' action='' method='post'>
+            <form style='display: inline-table' class='upd-form' action='' method='post'>
                 *Enter name: <input type='text' name='project_name' placeholder='*name'>
                 *Enter deadline: <input type='text' name='deadline' placeholder='*YYYY-MM-DD'>
                 <input class='done base-btn' type='submit' name='create_new_project' value='Submit'>
@@ -81,6 +81,21 @@
             $isID = false;
         }
         return $isID;
+    }
+    function check_symbols($user_input) {
+        $symbols = '!@#$%^&*-_=+`~,.?;"<>|][ '."&nbsp;".'&rpar;';
+        $is_symbol = false;
+        for ($i=0;$i<strlen($user_input);$i++) {
+            for ($j=0;$j<strlen($symbols);$j++) {
+                if ($user_input[$i] == $symbols[$j]) {
+                    $is_symbol = true;
+                break;
+                } else {
+                    $is_symbol = false;
+                }
+            }
+        }
+        return $is_symbol;
     }
                     
 ?>  

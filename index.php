@@ -25,7 +25,7 @@
                     $_SESSION['valid'] = true;
                     $_SESSION['timeout'] = time();
                     $_SESSION['username'] = 'name';
-                    header("Location: script/staff.php"); 
+                    header("Location: script/admin_staff.php"); 
                 } else {
                     echo $login_warning;
                 }

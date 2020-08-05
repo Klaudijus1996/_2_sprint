@@ -12,12 +12,9 @@
     <main>
         <div class="navbar">
             <nav>
-                <a href="staff.php">Darbuotojai</a>
-                <a href="projects.php">Projektai</a>
-                <a href="staff_projects.php">Darbuotoju ir projektu lentele</a>
-                <a href="admin_staff.php">Admin</a>
-                <a href="admin_projects.php">Admin P</a>
-                <a href="admin_SP.php">Admin SP</a>
+            <a href="admin_staff.php">Darbuotojai</a>
+                <a href="admin_projects.php">Projektai</a>
+                <a href="admin_SP.php">Darbuotoju ir projektu lentele</a>
                 <p>projektu valdymo sistema</p>
             </nav>
         </div>
