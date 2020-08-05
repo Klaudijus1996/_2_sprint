@@ -58,8 +58,8 @@
                         $projectName = $row['project_name'];
                         $projectDeadline = $row['deadline'];
                         $assign_person_edit = "<form style='width: fit-content; display: inline;' action='' method='get'>
-                                                    <input class='edit base-btn' type='submit' value='Edit'>
-                                                    <input type='hidden' name='sp_edit' value='$projectID'>
+                                                    <input class='edit base-btn' type='submit' value='Assign'>
+                                                    <input type='hidden' name='sp_edit' value='$projectID,$projectName'>
                                                 </form>";
                         echo "
                         <tr>
@@ -73,40 +73,40 @@
                     }
                     echo "</table>";
                     echo "
-                        <form action='' method='get'>
+                        <form style='display: inline-block' action='' method='get'>
                             <input class='add-staff base-btn' type='submit' name='create_project' value='Create New Project'>
                         </form>
                         ";
                     $link = $_SERVER['REQUEST_URI'];
                     $currentFile = substr($link, strripos($link, '/')+1);
                     include('add_project.php');
-                    $personID = $_GET['sp_edit'];
-                    if (isset($personID)) {
-                        echo "<h4>Assign projects<h4>";
+                    $projectID_and_name = $_GET['sp_edit'];
+                    if (isset($projectID_and_name)) {
+                        $project_id  = substr($projectID_and_name, 0, stripos($projectID_and_name, ','));
+                        $project_name = substr($projectID_and_name, stripos($projectID_and_name, ',')+1);
+                        // echo "<h4>Assign projects<h4>";
                         $sql = "SELECT GROUP_CONCAT(CONCAT_WS(' ', first_name, last_name)) as fullname FROM esybes_ir_rysiai.staff
                         GROUP BY staff.staffid;";
                         $result = mysqli_query($conn, $sql);
                         echo "
-                            <form action='' method='post'>
-                                <label for='names'>Choose a project: </label>
+                            <form style='display: inline-grid; margin-left: 20px;' action='' method='post'>
+                                <label style='color: #dddddd' for='names'>Assign project $project_name to: </label>
                                 <select name='names' id='names'>";
                         while($row = mysqli_fetch_assoc($result)) {
                             $staffNames = $row['fullname'] != NULL ? $row['fullname'] : "Undecided";
                                         echo "<option value='$staffNames'>$staffNames</option>";
-                                        if (isset($names)) {
-                                        break;
-                                        }
                                     }
                                     echo "</select>
                                     <br>
-                                    <input type='submit' value='Submit'>
+                                    <input style='width: fit-content; margin-bottom: 5px;' class='edit base-btn' type='submit' value='Submit'>
+                                    <a class='back base-btn' href='admin_SP.php'>Back</a>
                                     </form>
                                     ";
                                     $names = $_POST['names'];
                                         if (isset($names)) {
                                             $fname = substr($names, 0, stripos($names, ' '));
                                             $lname = substr($names, strlen($fname)+1);
-                                    $sql = "UPDATE esybes_ir_rysiai.staff SET ProjectID='$personID' WHERE esybes_ir_rysiai.staff.first_name='$fname' and esybes_ir_rysiai.staff.last_name='$lname'";
+                                    $sql = "UPDATE esybes_ir_rysiai.staff SET ProjectID='$project_id' WHERE esybes_ir_rysiai.staff.first_name='$fname' and esybes_ir_rysiai.staff.last_name='$lname'";
                                     if (mysqli_query($conn, $sql)) {
                                         echo "Staff data updated succesfully.";
                                         ob_end_flush();
