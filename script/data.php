@@ -83,7 +83,7 @@
         return $isID;
     }
     function check_symbols($user_input) {
-        $symbols = '!@#$%^&*-_=+`~,.?;"<>|][ '."&nbsp;".'&rpar;';
+        $symbols = '!@#$%^&*-_=+`~,.?;"<>|][ '."&nbsp;";
         $is_symbol = false;
         for ($i=0;$i<strlen($user_input);$i++) {
             for ($j=0;$j<strlen($symbols);$j++) {

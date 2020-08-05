@@ -22,7 +22,7 @@ $sql = "SELECT project_name, deadline FROM esybes_ir_rysiai.projects WHERE proje
             $upd_deadline = $_POST['upd-dl'];
             $get_done_request = $_POST['upd-project'];                
             if (isset($get_done_request)) {
-                if (!empty($upd_project_name) || !check_symbols($upd_project_name)) {
+                if (!empty($upd_project_name) && !check_symbols($upd_project_name)) {
                     $update_project = "UPDATE projects SET project_name='$upd_project_name', deadline='$upd_deadline' WHERE ProjectID=$get_done_request";
                     if (mysqli_query($conn, $update_project)) {
                     echo "Project data updated succesfully.";

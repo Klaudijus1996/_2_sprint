@@ -12,10 +12,12 @@
             echo $create_project_form_sp;
         }
                 if (isset($new_project_form_submit)) {
+                    $septyni = 7;
+                    $deadline = empty($project_deadline) ? date("Y-m-d") : $project_deadline;
                     if (empty($project_name) || check_symbols($project_name)) {
                         echo "<h4>Please provide a name for a Project</h4>";
                     } else {
-                        $sql = "insert into esybes_ir_rysiai.projects (project_name, deadline) values ('$project_name', '$project_deadline')";
+                        $sql = "insert into esybes_ir_rysiai.projects (project_name, deadline) values ('$project_name', '$deadline')";
                         if (mysqli_query($conn, $sql)) {
                             echo "Staff member added successfully";
                         } else {
