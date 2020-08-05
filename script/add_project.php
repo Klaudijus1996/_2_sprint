@@ -4,10 +4,13 @@
     $project_name = $_POST['project_name'];
     $project_deadline = $_POST['deadline'];
     $new_project_form_submit = $_POST['create_new_project'];
-
+    $clean_current_location = substr($currentFile, 0, stripos($currentFile, '?'));
     if (isset($new_project)) {
-        echo $create_project_form;
-        // $new_project_form_submit = $_GET['create_new_project'];
+        if ($clean_current_location == 'admin_projects.php') {
+            echo $create_project_form;
+        } else {
+            echo $create_project_form_sp;
+        }
                 if (isset($new_project_form_submit)) {
                     if (empty($project_name)) {
                         echo "<h4>Please provide a name for a Project</h4>";
@@ -20,7 +23,11 @@
                             echo "<h4>Please provide a name for a Project</h4>";
                         }
                         mysqli_close($conn);
-                        header('Location: admin_projects.php');
+                        if ($clean_current_location == 'admin_projects.php') {
+                        header('Location: admin_projects.php'); 
+                        } else {
+                            header('Location: admin_SP.php');
+                        }
                     }
                 }
     }

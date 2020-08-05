@@ -77,6 +77,8 @@
                 } else {
                     echo "ERROR: projects table not found!";
                 }
+                $link = $_SERVER['REQUEST_URI'];
+                $currentFile = substr($link, strripos($link, '/')+1);
                 require_once('logout.php');
                 include_once('add_project.php');
                 include_once('del_project_data.php');

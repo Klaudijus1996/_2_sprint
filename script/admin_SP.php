@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/upd_staff_form.css">
     <title>Staff and Projects</title>
 </head>
 <body>
@@ -71,6 +72,14 @@
                         ";
                     }
                     echo "</table>";
+                    echo "
+                        <form action='' method='get'>
+                            <input class='add-staff base-btn' type='submit' name='create_project' value='Create New Project'>
+                        </form>
+                        ";
+                    $link = $_SERVER['REQUEST_URI'];
+                    $currentFile = substr($link, strripos($link, '/')+1);
+                    include('add_project.php');
                     $personID = $_GET['sp_edit'];
                     if (isset($personID)) {
                         echo "<h4>Assign projects<h4>";
@@ -94,15 +103,6 @@
                                     </form>
                                     ";
                                     $names = $_POST['names'];
-                                    // echo $names;
-                                    // echo $personID;
-                                    // echo $lname;
-                                    // exit;
-                                    // while($row = mysqli_fetch_assoc($result)) {
-                                        //     echo "<h1>$names</h1>";
-                                        //     echo "<h1>$staffNames</h1>";
-                                        // }
-                                        // exit;
                                         if (isset($names)) {
                                             $fname = substr($names, 0, stripos($names, ' '));
                                             $lname = substr($names, strlen($fname)+1);

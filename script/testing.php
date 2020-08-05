@@ -13,15 +13,10 @@
         <input type="submit" name="kekw" value="submit">
     </form>
 <?php 
-    $yeet = $_GET['yeet'];
-    $booy = $_GET['booy'];
-    $kekw = $_GET['kekw'];
-    echo "tekstas= ".$yeet.'<br>';
-    if (isset($kekw)) {
-        if (empty($yeet)||empty($booy)) {
-            echo "Tuscias!";
-        }
-    }
+    echo $_SERVER['REQUEST_URI'];
+    $server = $_SERVER['REQUEST_URI'];
+    $test = substr($server, strripos($server, '/')+1);
+    echo "<br>$test";
 ?>
 </body>
 </html>

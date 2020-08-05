@@ -49,6 +49,14 @@
                 <a class='back base-btn' href='admin_projects.php'>Back</a>
             </form>
                 ";
+    $create_project_form_sp = "
+            <form class='upd-form' action='' method='post'>
+                *Enter name: <input type='text' name='project_name' placeholder='*name'>
+                *Enter deadline: <input type='text' name='deadline' placeholder='*YYYY-MM-DD'>
+                <input class='done base-btn' type='submit' name='create_new_project' value='Submit'>
+                <a class='back base-btn' href='admin_SP.php'>Back</a>
+            </form>
+                ";
     function check_numbers($user_input) {
         $isNum = false;
         for($i=0; $i < strlen($user_input); $i++) {
