@@ -19,7 +19,7 @@ and then do the following code:
             ProjectID int DEFAULT NULL
             );
         CREATE TABLE esybes_ir_rysiai.projects (
-            ProjectID INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+            ProjectID INT PRIMARY KEY NOT NULL AUTO_INCREMENT, -- Must contain 3 numbers
             Project_name varchar(30) NOT NULL,
             Deadline varchar(255) DEFAULT NULL
             );
