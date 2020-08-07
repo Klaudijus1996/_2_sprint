@@ -1,4 +1,5 @@
 <?php 
+    include_once('data.php');
     $get_upd_staff = $_GET['upd-staff-btn'];
     $sql = isset($get_upd_staff) ? "SELECT first_name, last_name, $role, projectid FROM esybes_ir_rysiai.staff WHERE StaffID=$get_upd_staff" : "SELECT first_name, last_name, $role, projectid FROM esybes_ir_rysiai.staff where staffid=1";
     if (isset($_GET['upd-staff-btn'])) {
@@ -22,15 +23,13 @@
                 </form>
                 ";
             }
-            $upd_fname = $_POST['upd-fname'];
-            $upd_lname = $_POST['upd-lname'];
-            $upd_role = $_POST['upd-role'];
-            $upd_staffProject = !empty($_POST['upd-staffProject']) ? $_POST['upd-staffProject'] : "NULL";
-            $subStaffUpd = $_POST['sub-staff-upd'];                
             if (isset($_POST['upd-staff'])) {
+                $upd_fname = $_POST['upd-fname'];
+                $upd_lname = $_POST['upd-lname'];
+                $upd_role = $_POST['upd-role'];
+                $upd_staffProject = !empty($_POST['upd-staffProject']) ? $_POST['upd-staffProject'] : 'NULL';
                 $post_upd_staff = $_POST['upd-staff'];
-                if (!empty($upd_fname) && !empty($upd_lname) && !check_numbers($upd_fname) && !check_numbers($upd_lname) && check_symbols($upd_fname)
-                    && check_symbols($upd_lname)) {
+                if ( (!empty($upd_fname) && check_string($upd_fname))&&!empty($upd_lname) && check_string($upd_lname)) {
                     $update_staff = "UPDATE staff SET first_name='$upd_fname', last_name='$upd_lname', $role='$upd_role', projectid=$upd_staffProject WHERE StaffID=$post_upd_staff";
                     if (mysqli_query($conn, $update_staff)) {
                     echo "Staff data updated succesfully.";
@@ -41,7 +40,7 @@
                         echo "Error updating record: " . mysqli_error($conn);
                     }
                 } else {
-                    echo "<h4 style='color: #8F1F14'>ERROR: Invalid information provided!</h4>";
+                    echo "<h4 style='color: #8F1F14'>ERROR: Invalid information provided! You good?</h4>";
                 }
             }
         }

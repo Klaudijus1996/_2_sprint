@@ -97,5 +97,28 @@
         }
         return $is_symbol;
     }
+    function check_string($user_input) {
+        $is_num = false;
+        $is_symbol = false;
+        $is_correct = true;
+        $symbols = '!@#$%^&*-_=+`~,.?;"<>|][ '."&nbsp;";
+        for ($i=0; $i < strlen($user_input); $i++) { 
+            if (is_numeric($user_input[$i])) {
+                $is_num = true;
+            break;
+            } else {
+                for ($j=0; $j < strlen($symbols); $j++) { 
+                    if ($user_input[$i] == $symbols[$j]) {
+                        $is_symbol = true;
+                    break;
+                    }
+                }
+            }
+        }
+        if ($is_num || $is_symbol) {
+            $is_correct = false;
+        }
+        return $is_correct;
+    }
                     
 ?>  
