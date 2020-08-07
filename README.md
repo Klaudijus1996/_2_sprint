@@ -9,6 +9,8 @@ Servername: localhost
 and then do the following code:
 
     CREATE DATABASE esybes_ir_rysiai;
+
+
         CREATE TABLE esybes_ir_rysiai.staff (
             StaffID INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
             First_name varchar(30) NOT NULL,
@@ -21,6 +23,8 @@ and then do the following code:
             Project_name varchar(30) NOT NULL,
             Deadline varchar(255) DEFAULT NULL
             );
+            
+
                 -- OPTIONAL CODE FOR IMMEDIATE TESTING
                 INSERT INTO esybes_ir_rysiai.staff VALUES (1,'Tadas','Blinda','Associate VFX Artist',120),
                 (2,'Robin','Hood','Concept Artist',101),
