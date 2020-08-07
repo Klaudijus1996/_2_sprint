@@ -1,7 +1,7 @@
 # 2.nd Sprint project :: 
 ## Login : name, Password : password
--v Beta
-C.R.U.D.
+#### -v Beta
+#### C.R.U.D.
 To test the C.R.U.D. please open your MySQL workbench, make a connection for:
 Username: root 
 Password: mysql
